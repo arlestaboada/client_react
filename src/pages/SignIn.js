@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 
 import validator from 'validator'
 import { isObjEmpty } from '../helpers/helpers'
+import { loginUser } from '../actions/authActions'
 
 export default function SignIn() {
 
@@ -30,6 +31,11 @@ export default function SignIn() {
       return
 
     }
+    dispatch(loginUser({email,password })).then(response=>{
+
+    }).catch(err=>{
+      
+    })
   }
  
   return (
@@ -38,6 +44,7 @@ export default function SignIn() {
         <Col sm="12" md={{span:8, offset:2}} lg={{span:6,offset:3}}>
           <Card body>
             <h3>Iniciar sesión</h3>
+            <hr/>
             <SignInForm errors={errors} onSubmitCallback={login}></SignInForm>
             <div className='mt-4'>
               <Link to={"/signup"}>¿No tienes una cuenta? Registrate aquí</Link>
