@@ -1,18 +1,32 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Container,Row,Col,Card } from 'react-bootstrap'
-import SignInForm from '../components/forms/SignInForm'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
 import validator from 'validator'
+import { useNavigate} from "react-router-dom"
+
 import { isObjEmpty } from '../helpers/helpers'
 import { loginUser } from '../actions/authActions'
+import SignInForm from '../components/forms/SignInForm'
 
 export default function SignIn() {
 
   const [errors, setErrors] = useState({})
 
   const dispatch=useDispatch()
+  const loggedIn=useSelector(state=>state.auth.loggedIn)
+  const history= useNavigate()
+
+  useEffect(() => {
+    if(loggedIn){
+        history("/")
+
+
+    }
+    
+  })
+  
+
   const login =({email,password})=>{
     const errors={}
     setErrors(errors)
