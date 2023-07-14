@@ -5,9 +5,11 @@ from "react-router-dom"
 import { Container } from "react-bootstrap"
 import Posts from "./pages/Posts"
 import SignIn from "./pages/SignIn"
+import UserPosts from "./pages/UserPosts"
 import store from "./store"
 import { Provider } from "react-redux"
 import checkForToken from "./helpers/checkForToken"
+import PrivateRoute from "./utils/PrivateRoute"
 
 
 checkForToken()
@@ -19,17 +21,25 @@ function App() {
             <Navigation>
 
             </Navigation>
+          </div>
+            
             <Container>
               <Routes>
-                <Route exact path="/" Component={Posts}></Route>
-                <Route exact path="/signin" Component={SignIn}></Route>
                 
-
+                  <Route exact path="/" Component={Posts}></Route>
+                  <Route exact path="/signin" Component={SignIn}></Route>
+                  
+                  <Route exact path="/posts" 
+                  element={<PrivateRoute ><UserPosts/></PrivateRoute>}/>
+                
+                 
+                  
               </Routes>
+              
               
             </Container>
 
-          </div>
+          
       </Router>
 
     </Provider>
