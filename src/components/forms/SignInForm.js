@@ -25,7 +25,7 @@ export default function SignInForm({errors,onSubmitCallback}) {
                 isInvalid={errors.email}
             />
             <Form.Control.Feedback type="invalid">
-                {  console.log( errors.email)}
+               
                 {
                   
                 errors.email

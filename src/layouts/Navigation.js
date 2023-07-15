@@ -26,7 +26,7 @@ export default function Navigation() {
         <Nav > 
           { !loggedIn?(
               <React.Fragment>
-                <Nav.Link>Crear cuenta</Nav.Link>
+                <Nav.Link as={NavLink} to="/signup">Crear cuenta</Nav.Link>
                   <Nav.Link as={NavLink} to="/signin">Iniciar sesion</Nav.Link>
               </React.Fragment>
            )

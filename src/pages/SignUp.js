@@ -7,9 +7,9 @@ import { useNavigate} from "react-router-dom"
 
 import { isObjEmpty } from '../helpers/helpers'
 import { loginUser } from '../actions/authActions'
-import SignInForm from '../components/forms/SignInForm'
+import SignUpForm from '../components/forms/SignUpForm'
 
-export default function SignIn() {
+export default function SignUp() {
 
   const [errors, setErrors] = useState({})
 
@@ -27,17 +27,28 @@ export default function SignIn() {
   })
   
 
-  const login =({email,password})=>{
+  const login =({email,password,firstName,lastName})=>{
     const errors={}
     setErrors(errors)
     if(!validator.isEmail(email)){
       errors.email="El correo electrónico es inválido."
 
     }
-    if(validator.isEmpty(password)){
-      errors.password="La contraseña no puede estar vacia."
+    if(!validator.isLength(password,{min:8,max:30})){
+      errors.password="La contraseña debe tener entre 8 y 30 caracteres."
 
     }
+
+    if(validator.isEmpty(firstName)){
+      errors.firstName="El nombre es obligatorio."
+
+    }
+
+    if(validator.isEmpty(lastName)){
+      errors.lastName="Los apellidos son obligatorios."
+
+    }
+
 
     if(!isObjEmpty(errors)){
      
@@ -45,16 +56,17 @@ export default function SignIn() {
       return
 
     }
-    dispatch(loginUser(
-      {email,
-       password 
-      }))
-      .then(response=>{
+    
+    // dispatch(loginUser(
+    //   {email,
+    //    password 
+    //   }))
+    //   .then(response=>{
 
-    }).catch(err=>{
-        setErrors({auth:"No se puede inciar sesión con esas credenciales."})
+    // }).catch(err=>{
+    //     setErrors({auth:"No se puede inciar sesión con esas credenciales."})
       
-    })
+    // })
   }
  
   return (
@@ -63,11 +75,11 @@ export default function SignIn() {
         <Col sm="12" md={{span:8, offset:2}} lg={{span:6,offset:3}}>
           <Card body>
             {errors.auth && <Alert variant="danger">{errors.auth}</Alert>}
-            <h3>Iniciar sesión</h3>
+            <h3>Crear cuenta</h3>
             <hr/>
-            <SignInForm errors={errors} onSubmitCallback={login}></SignInForm>
+            <SignUpForm errors={errors} onSubmitCallback={login}></SignUpForm>
             <div className='mt-4'>
-              <Link to={"/signup"}>¿No tienes una cuenta? Registrate aquí</Link>
+              <Link to={"/signup"}>¿Ya tienes una cuenta? Inicia sesión aquí. </Link>
 
             </div>
 

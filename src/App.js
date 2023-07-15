@@ -10,6 +10,7 @@ import store from "./store"
 import { Provider } from "react-redux"
 import checkForToken from "./helpers/checkForToken"
 import PrivateRoute from "./utils/PrivateRoute"
+import SignUp from "./pages/SignUp"
 
 
 checkForToken()
@@ -28,7 +29,7 @@ function App() {
                 
                   <Route exact path="/" Component={Posts}></Route>
                   <Route exact path="/signin" Component={SignIn}></Route>
-                  
+                  <Route exact path="/signup" Component={SignUp}></Route>
                   <Route exact path="/posts" 
                   element={<PrivateRoute ><UserPosts/></PrivateRoute>}/>
                 
