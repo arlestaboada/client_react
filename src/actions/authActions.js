@@ -1,5 +1,5 @@
 import axios from "axios"
-import { LOGIN_ENDPOINT } from "../helpers/endpoints"
+import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "../helpers/endpoints"
 import { SET_CURRENT_USER } from "./types"
 import jwt_decode from "jwt-decode"
 import setAuthToken from "../helpers/setAuthToken"
@@ -21,6 +21,28 @@ export const loginUser=(userData)=>dispatch=>{
             setAuthToken(authorization)
             const decoded=jwt_decode(authorization)
             dispatch(setCurrentUser({user:decoded,loggedIn:true}))
+            resolve(response);
+        }).catch(
+            error=>{
+                reject(error)
+            }
+
+        )
+
+    })
+}
+
+
+export const registerUser=(userData)=>dispatch=>{
+
+   
+    return new Promise((resolve,reject)=>{
+
+        axios.post(REGISTER_ENDPOINT,userData,{
+            headers:{"Accept":"application/json",
+                     "Content-Type":"application/json"}
+        }).then(response=>{
+
             resolve(response);
         }).catch(
             error=>{

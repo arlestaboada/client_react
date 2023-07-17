@@ -6,7 +6,7 @@ import validator from 'validator'
 import { useNavigate} from "react-router-dom"
 
 import { isObjEmpty } from '../helpers/helpers'
-import { loginUser } from '../actions/authActions'
+import {  loginUser, registerUser } from '../actions/authActions'
 import SignUpForm from '../components/forms/SignUpForm'
 
 export default function SignUp() {
@@ -27,7 +27,7 @@ export default function SignUp() {
   })
   
 
-  const login =({email,password,firstName,lastName})=>{
+  const register =({email,password,firstName,lastName})=>{
     const errors={}
     setErrors(errors)
     if(!validator.isEmail(email)){
@@ -57,16 +57,19 @@ export default function SignUp() {
 
     }
     
-    // dispatch(loginUser(
-    //   {email,
-    //    password 
-    //   }))
-    //   .then(response=>{
+    dispatch(registerUser(
+      {email,
+       password,
+       firstName,
+       lastName
+      }))
+      .then(response=>{
+        dispatch(loginUser({email,password}));
 
-    // }).catch(err=>{
-    //     setErrors({auth:"No se puede inciar sesión con esas credenciales."})
+    }).catch(err=>{
+        setErrors({registerError:err.response.data.message})
       
-    // })
+    })
   }
  
   return (
@@ -74,10 +77,10 @@ export default function SignUp() {
       <Row>
         <Col sm="12" md={{span:8, offset:2}} lg={{span:6,offset:3}}>
           <Card body>
-            {errors.auth && <Alert variant="danger">{errors.auth}</Alert>}
+            {errors.registerError && <Alert variant="danger">{errors.registerError}</Alert>}
             <h3>Crear cuenta</h3>
             <hr/>
-            <SignUpForm errors={errors} onSubmitCallback={login}></SignUpForm>
+            <SignUpForm errors={errors} onSubmitCallback={register}></SignUpForm>
             <div className='mt-4'>
               <Link to={"/signup"}>¿Ya tienes una cuenta? Inicia sesión aquí. </Link>
 
