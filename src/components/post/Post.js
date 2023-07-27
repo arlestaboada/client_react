@@ -8,7 +8,7 @@ export default function Post({post}) {
     <Card className='mb-4'>
       <Card.Body>
         <Card.Title>
-          <Link to={"/"}>{post.title}</Link>
+          <Link to={`/post/${post.postId}`}>{post.title}</Link>
 
         </Card.Title>
         <Card.Text>
