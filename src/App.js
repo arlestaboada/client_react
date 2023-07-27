@@ -11,7 +11,9 @@ import { Provider } from "react-redux"
 import checkForToken from "./helpers/checkForToken"
 import PrivateRoute from "./utils/PrivateRoute"
 import SignUp from "./pages/SignUp"
-
+import moment from "moment"
+import "moment/locale/es"
+moment.locale("es")
 
 checkForToken()
 function App() {

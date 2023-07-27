@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import moment from "moment"
 
 export default function Post({post}) {
   return (
@@ -11,7 +12,7 @@ export default function Post({post}) {
 
         </Card.Title>
         <Card.Text>
-          Creado por {post.user.firstName},{post.createdAt}
+          Creado por {post.user.firstName},{moment(post.createdAt).fromNow()}
 
         </Card.Text>
       </Card.Body>
