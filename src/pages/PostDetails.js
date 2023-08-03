@@ -1,6 +1,5 @@
 import React,{ useState,useEffect } from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
-import { POSTS_DETAILS_ENDPOINT } from '../helpers/endpoints'
 import axios from 'axios'
 import moment from 'moment/moment'
 import { Button,Card } from 'react-bootstrap'
@@ -9,6 +8,8 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import {toast} from 'react-toastify'
 
 
+import { POSTS_DETAILS_ENDPOINT } from '../helpers/endpoints'
+import { downloadTextAsFile } from '../helpers/helpers'
 
 export default function PostDetails() {
     const {id}=useParams()
@@ -53,7 +54,7 @@ export default function PostDetails() {
                     size='sm' 
                     onClick={
                       ()=>{
-
+                        downloadTextAsFile(post.postId,post.content)
 
                       }
                       }>
