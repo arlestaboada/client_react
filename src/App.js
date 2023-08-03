@@ -16,14 +16,15 @@ import { Provider } from "react-redux"
 import checkForToken from "./helpers/checkForToken"
 import PrivateRoute from "./utils/PrivateRoute"
 
+import { ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.min.css"
 
 
 import moment from "moment"
 import "moment/locale/es"
 moment.locale("es")
 
-import { ToastContainer } from 'react-toastify'
-import "react-toastify/dist/ReactToastify.min.css"
+
 
 checkForToken()
 function App() {
