@@ -5,6 +5,7 @@ import axios from 'axios'
 import moment from 'moment/moment'
 import { Button,Card } from 'react-bootstrap'
 import {  Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 
 
@@ -45,12 +46,39 @@ export default function PostDetails() {
     
               <Card>
                 <Card.Header>
-                  <Button variant='primary' className='me-2' size='sm' onClick={()=>{}}>
+                  <Button 
+                    variant='primary' 
+                    className='me-2' 
+                    size='sm' 
+                    onClick={
+                      ()=>{
+
+
+                      }
+                      }>
                     Descargar
                   </Button>
-                  <Button variant='primary'    size='sm' onClick={()=>{}}>
-                    Copiar al portapapeles
-                  </Button>
+                  <CopyToClipboard
+                    onCopy={
+                      ()=>{
+                        console.log("Copiando al portapapeles")
+                      }
+
+                    }
+                    text={post.content}
+                  >
+                        <Button 
+                          variant='primary'   
+                          size='sm' 
+                          onClick={()=>{
+
+                              
+                          }}>
+                          Copiar al portapapeles
+                      </Button>
+
+                  </CopyToClipboard>
+                  
                 </Card.Header>
                     <Card.Body>
                       <SyntaxHighlighter showLineNumbers={true}>
