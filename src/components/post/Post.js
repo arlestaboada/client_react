@@ -1,11 +1,26 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Badge, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import moment from "moment"
 
-export default function Post({post}) {
+import { exposures } from '../../helpers/exposures'
+
+export default function Post({post, renderControls}) {
   return (
     <Card className='mb-4'>
+      {renderControls && <Card.Header>
+        <div>
+          <Badge
+            className='me-2 bg-secondary' >
+            {post.exposure.type}
+          </Badge>
+          {post.expired && post.exposure.id===exposures.PUBLIC &&  <Badge
+            className='me-2 bg-danger' >
+            Expiró
+          </Badge>}
+        </div>
+      </Card.Header> }
+      
       <Card.Body>
         <Card.Title>
           <Link to={`/post/${post.postId}`}>{post.title}</Link>

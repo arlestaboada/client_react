@@ -33,7 +33,8 @@ export default function Posts() {
 
       </Card>
       <div>
-        {posts.map(post=><Post key={post.postId} post={post}></Post>)}
+        {posts.map(post=><Post key={post.postId} 
+          post={post} renderControls={false}></Post>)}
       </div>
     </div>
   )
