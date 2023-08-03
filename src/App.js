@@ -3,6 +3,8 @@ import Navigation from "./layouts/Navigation"
 import { Route, BrowserRouter as Router,Routes} 
 from "react-router-dom"
 import { Container } from "react-bootstrap"
+
+
 import Posts from "./pages/Posts"
 import SignIn from "./pages/SignIn"
 import UserPosts from "./pages/UserPosts"
@@ -15,9 +17,13 @@ import checkForToken from "./helpers/checkForToken"
 import PrivateRoute from "./utils/PrivateRoute"
 
 
+
 import moment from "moment"
 import "moment/locale/es"
 moment.locale("es")
+
+import { ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.min.css"
 
 checkForToken()
 function App() {
@@ -31,6 +37,7 @@ function App() {
           </div>
             
             <Container>
+              <ToastContainer/>
               <Routes>
                 
                   <Route exact path="/" Component={Posts}></Route>

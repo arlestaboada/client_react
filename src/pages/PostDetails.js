@@ -6,6 +6,7 @@ import moment from 'moment/moment'
 import { Button,Card } from 'react-bootstrap'
 import {  Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import {toast} from 'react-toastify'
 
 
 
@@ -61,7 +62,11 @@ export default function PostDetails() {
                   <CopyToClipboard
                     onCopy={
                       ()=>{
-                        console.log("Copiando al portapapeles")
+                       // console.log("Copiando al portapapeles")
+                       toast.info("Copiando al portapapeles",{
+                        position:toast.POSITION.BOTTOM_CENTER,
+                        autoClose:2000
+                       })
                       }
 
                     }
