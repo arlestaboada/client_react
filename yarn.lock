@@ -7125,6 +7125,11 @@ pkg-up@^3.1.0:
   dependencies:
     find-up "^3.0.0"
 
+placeholder-loading@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/placeholder-loading/-/placeholder-loading-0.6.0.tgz#32310c02b8aa1a24cf87958dc50aa1f695135cb1"
+  integrity sha512-KdUnwa3AEuXlem7QeSi4qtny+QfiACUh0P0iYskJBwfg3LtAUMQFyd9L21ysdBQ65KbK6tZ4VsKPkcF3mULwMQ==
+
 postcss-attribute-case-insensitive@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/postcss-attribute-case-insensitive/-/postcss-attribute-case-insensitive-5.0.2.tgz#03d761b24afc04c09e757e92ff53716ae8ea2741"
