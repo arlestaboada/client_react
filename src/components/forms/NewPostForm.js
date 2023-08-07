@@ -125,7 +125,7 @@ export default function NewPostForm({errors,onSubmitCallback}) {
                         }
                     </Form.Control.Feedback>
         </Form.Group>
-        <Button  variant='primary' type="submit">Iniciar sesión</Button>
+        <Button  variant='primary' type="submit">Crear post</Button>
 
     </Form>
   )
