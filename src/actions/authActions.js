@@ -21,7 +21,7 @@ export const loginUser=(userData)=>dispatch=>{
             setAuthToken(authorization)
             const decoded=jwt_decode(authorization)
             dispatch(setCurrentUser({user:decoded,loggedIn:true}))
-            resolve(response);
+            resolve(response)
         }).catch(
             error=>{
                 reject(error)
