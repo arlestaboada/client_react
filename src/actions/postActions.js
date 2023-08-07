@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { CREATE_POST_ENDPOINT } from '../helpers/endpoints'
 import { SET_USER_POSTS} from "./types"
 import { USER_POSTS_ENDPOINT } from '../helpers/endpoints'
 

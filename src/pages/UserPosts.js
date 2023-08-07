@@ -1,28 +1,42 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
-import axios from 'axios'
-import { Card} from 'react-bootstrap';
-
-import { USER_POSTS_ENDPOINT } from '../helpers/endpoints'
+import { Card} from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 
 import Post from "../components/post/Post"
 import Placeholder from '../components/utils/Placeholder'
+import { getUserPosts } from '../actions/postActions'
+
+
 
 
 export default function UserPosts() {
-  const [posts, setPosts] = useState([])
-  const [fetching, setFetching] = useState(true)
+
+  const [fetching, setFetching] = useState(false)
+  const posts=useSelector(store=>store.posts.posts)
+  const fetched=useSelector(store=>store.posts.fetched)
+  const dispatch=useDispatch()
 
   useEffect(()=>{
-    axios.get(USER_POSTS_ENDPOINT)
-        .then(response=>{
-          setPosts(response.data)
+    async function fetchedPosts(){
+      if(!fetched){
+        try {
+          setFetching(true)
+          await dispatch(getUserPosts())
           setFetching(false)
+        } catch (error) {
 
-        }).catch(err=>{
-          console.log(err)
-          setFetching(false)
-        })
+          toast.error(error.response.data.message,
+            {position:toast.POSITION.BOTTOM_CENTER,
+              autoClose:2000})
+          
+        }
+
+      }
+
+    }
+    fetchedPosts()
 
   },[])
   return (
