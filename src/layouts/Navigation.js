@@ -16,7 +16,7 @@ export default function Navigation() {
       {
       
         <Nav className="me-auto">
-          { loggedIn && ( <Nav.Link>Create Post</Nav.Link>)}
+          { loggedIn && ( <Nav.Link  as={NavLink} to="/newpost">Create Post</Nav.Link>)}
          
         </Nav>
       
