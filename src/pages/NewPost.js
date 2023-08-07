@@ -3,6 +3,7 @@ import { Container,Row,Col,Card, Alert } from 'react-bootstrap'
 import validator from 'validator'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import {toast} from 'react-toastify'
 
 import { isObjEmpty } from '../helpers/helpers'
 import NewPostForm from '../components/forms/NewPostForm'
@@ -41,6 +42,10 @@ export default function NewPost() {
     axios.post(CREATE_POST_ENDPOINT,{title,content,
       exposureId,expirationTime})
       .then(response=>{
+        toast.info("El post se ha creado.",{
+          position:toast.POSITION.BOTTOM_CENTER,
+          autoClose:2000
+         })
      
         history(`/post/${response.data.postId}`)
      
