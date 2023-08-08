@@ -19,6 +19,7 @@ import NewPost from "./pages/NewPost"
 
 import { ToastContainer } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.min.css"
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 
 import moment from "moment"

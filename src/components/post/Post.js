@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import moment from "moment"
 
 import { exposures } from '../../helpers/exposures'
+import DeletePostButton from './buttons/DeletePostButton'
 
 export default function Post({post, renderControls}) {
   return (
@@ -21,7 +22,8 @@ export default function Post({post, renderControls}) {
         </div>
         <div>
           <Button variant="primary" size="sm" className='me-2'>Editar</Button>
-          <Button variant="danger" size="sm">Eliminar</Button>
+          <DeletePostButton postId={post.postId} title={post.title}>
+          </DeletePostButton>
         </div>
 
       </Card.Header> }
