@@ -9,14 +9,17 @@ import { isObjEmpty } from '../helpers/helpers'
 import NewPostForm from '../components/forms/NewPostForm'
 import { exposures } from '../helpers/exposures'
 import { CREATE_POST_ENDPOINT } from '../helpers/endpoints'
+import { useDispatch } from 'react-redux'
+import { getUserPosts } from '../actions/postActions'
 
 
 export default function NewPost() {
 
   const [errors, setErrors] = useState({})
   const history= useNavigate()
+  const dispatch=useDispatch()
 
-  const login =({title,content,
+  const createPost =async({title,content,
     exposureId,expirationTime})=>{
 
     const errors={}
@@ -39,23 +42,25 @@ export default function NewPost() {
 
     }
     expirationTime=exposureId==exposures.PRIVATE?0:expirationTime
-    axios.post(CREATE_POST_ENDPOINT,{title,content,
-      exposureId,expirationTime})
-      .then(response=>{
-        toast.info("El post se ha creado.",{
-          position:toast.POSITION.BOTTOM_CENTER,
-          autoClose:2000
-         })
-     
-        history(`/post/${response.data.postId}`)
-     
 
-      })
-      .catch(error=>{
-        setErrors({newpost:error.response.data.message})
-       
+    try {
+      const response= await axios.post(
+                     CREATE_POST_ENDPOINT,
+                     {title,content,
+                      exposureId,expirationTime
+                    })
+      await dispatch(getUserPosts())
+      toast.info("El post se ha creado.",{
+             position:toast.POSITION.BOTTOM_CENTER,
+       autoClose:2000
+            })
+      history(`/post/${response.data.postId}`)
+      
+    } catch (error) {
 
-      })
+      setErrors({newpost:error.response.data.message})
+      
+    }
  
   }
  
@@ -67,7 +72,7 @@ export default function NewPost() {
             {errors.newpost && <Alert variant="danger">{errors.auth}</Alert>}
             <h3>Crear Post</h3>
             <hr/>
-            <NewPostForm errors={errors} onSubmitCallback={login}></NewPostForm>
+            <NewPostForm errors={errors} onSubmitCallback={createPost}></NewPostForm>
             
 
           </Card>
