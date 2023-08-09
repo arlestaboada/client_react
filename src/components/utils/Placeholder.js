@@ -15,10 +15,7 @@ export default function Placeholder() {
                     
                 </div>
                 
-            </div>
-           
-               
-                
+            </div>             
             
      </div>
   </div>

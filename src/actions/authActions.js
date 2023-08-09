@@ -1,8 +1,10 @@
 import axios from "axios"
-import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "../helpers/endpoints"
 import { SET_CURRENT_USER } from "./types"
 import jwt_decode from "jwt-decode"
+
 import setAuthToken from "../helpers/setAuthToken"
+import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } 
+from "../helpers/endpoints"
 
 export const loginUser=(userData)=>dispatch=>{
 

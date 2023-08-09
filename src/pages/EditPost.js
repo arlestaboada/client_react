@@ -4,12 +4,13 @@ import validator from 'validator'
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom'
 import {toast} from 'react-toastify'
+import { useDispatch } from 'react-redux'
 
 import { isObjEmpty } from '../helpers/helpers'
 import NewPostForm from '../components/forms/NewPostForm'
 import { exposures } from '../helpers/exposures'
-import { UPDATE_POST_ENDPOINT,POSTS_DETAILS_ENDPOINT } from '../helpers/endpoints'
-import { useDispatch } from 'react-redux'
+import { UPDATE_POST_ENDPOINT,POSTS_DETAILS_ENDPOINT } 
+from '../helpers/endpoints'
 import { getUserPosts } from '../actions/postActions'
 
 
@@ -57,7 +58,8 @@ export default function EditPost() {
       return
 
     }
-    expirationTime=exposureId==exposures.PRIVATE?0:expirationTime
+    expirationTime=exposureId==
+    exposures.PRIVATE?0:expirationTime
 
     try {
       const response= await axios.put(
@@ -85,7 +87,10 @@ export default function EditPost() {
       <Row>
         <Col sm="12"  lg={{span:10,offset:1}}>
           <Card body>
-            {errors.editpost && <Alert variant="danger">{errors.auth}</Alert>}
+            {errors.editpost && 
+              <Alert variant="danger">
+                {errors.auth}
+              </Alert>}
             <h3>Editar Post</h3>
             <hr/>
             {post &&  <NewPostForm 
@@ -97,10 +102,7 @@ export default function EditPost() {
                     textButton={"Editar post"}
                    ></NewPostForm>}
             
-            
-
           </Card>
-        
         </Col>
       </Row>
    </Container>

@@ -4,12 +4,12 @@ import validator from 'validator'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import {toast} from 'react-toastify'
+import { useDispatch } from 'react-redux'
 
 import { isObjEmpty } from '../helpers/helpers'
 import NewPostForm from '../components/forms/NewPostForm'
 import { exposures } from '../helpers/exposures'
 import { CREATE_POST_ENDPOINT } from '../helpers/endpoints'
-import { useDispatch } from 'react-redux'
 import { getUserPosts } from '../actions/postActions'
 
 
@@ -41,7 +41,8 @@ export default function NewPost() {
       return
 
     }
-    expirationTime=exposureId==exposures.PRIVATE?0:expirationTime
+    expirationTime=exposureId==
+    exposures.PRIVATE?0:expirationTime
 
     try {
       const response= await axios.post(
@@ -69,14 +70,16 @@ export default function NewPost() {
       <Row>
         <Col sm="12"  lg={{span:10,offset:1}}>
           <Card body>
-            {errors.newpost && <Alert variant="danger">{errors.auth}</Alert>}
+            {errors.newpost && 
+            <Alert variant="danger">
+              {errors.auth}
+            </Alert>}
             <h3>Crear Post</h3>
             <hr/>
-            <NewPostForm errors={errors} onSubmitCallback={createPost}></NewPostForm>
-            
-
+            <NewPostForm 
+             errors={errors} onSubmitCallback={createPost}>
+             </NewPostForm>
           </Card>
-        
         </Col>
       </Row>
    </Container>

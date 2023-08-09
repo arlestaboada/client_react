@@ -15,7 +15,8 @@ export default function DeletePostButton({postId,title}) {
     const createAlert=()=>{
         confirmAlert({
             title:"Eliminar post",
-            message:`¿Estas seguro que deseas eliminar el post ${title}?`,
+            message:
+            `¿Estas seguro que deseas eliminar el post ${title}?`,
             buttons:[{
                 label:"Sí",
                 onClick:()=>{
@@ -34,7 +35,9 @@ export default function DeletePostButton({postId,title}) {
     const deletePost=async()=>{
 
         try {
-            await axios.delete(`${DELETE_POST_ENDPOINT}/${postId}`)
+            await axios.delete(
+                `${DELETE_POST_ENDPOINT}/${postId}`
+            )
             await dispatch(getUserPosts())
             toast.info("El post se ha eliminado.",{
                 position:toast.POSITION.BOTTOM_CENTER,
@@ -48,9 +51,6 @@ export default function DeletePostButton({postId,title}) {
                 autoClose:2000
                 })
         }
-
-       
-
 
     }
   return (

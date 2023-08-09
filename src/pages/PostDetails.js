@@ -3,7 +3,8 @@ import { useParams,useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment/moment'
 import { Button,Card } from 'react-bootstrap'
-import {  Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import {  Prism as SyntaxHighlighter } 
+from 'react-syntax-highlighter'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import {toast} from 'react-toastify'
 
@@ -53,7 +54,9 @@ export default function PostDetails() {
                     size='sm' 
                     onClick={
                       ()=>{
-                        downloadTextAsFile(post.postId,post.content)
+                        downloadTextAsFile(
+                          post.postId,post.content
+                        )
 
                       }
                       }>

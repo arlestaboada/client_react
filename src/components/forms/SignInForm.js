@@ -32,10 +32,7 @@ export default function SignInForm({errors,onSubmitCallback}) {
                 
                 }
 
-            </Form.Control.Feedback>
-
-
-           
+            </Form.Control.Feedback>      
 
         </Form.Group>
 
@@ -55,7 +52,11 @@ export default function SignInForm({errors,onSubmitCallback}) {
 
         </Form.Group>
 
-        <Button variant='primary' type="submit">Iniciar sesión</Button>
+        <Button 
+          variant='primary' 
+          type="submit">
+            Iniciar sesión
+        </Button>
 
     </Form>
   )

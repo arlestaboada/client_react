@@ -18,4 +18,4 @@ const userPostReducer = function(state=initialState,action) {
 
   }
 }
-export default  userPostReducer;
+export default  userPostReducer

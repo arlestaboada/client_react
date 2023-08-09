@@ -2,6 +2,7 @@ import React from 'react'
 import { Nav,NavDropdown,Navbar } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
+
 import { logoutUser } from '../actions/authActions'
 
 export default function Navigation() {
@@ -16,7 +17,10 @@ export default function Navigation() {
       {
       
         <Nav className="me-auto">
-          { loggedIn && ( <Nav.Link  as={NavLink} to="/newpost">Create Post</Nav.Link>)}
+          { loggedIn && ( 
+            <Nav.Link  as={NavLink} to="/newpost">
+              Create Post
+            </Nav.Link>)}
          
         </Nav>
       
@@ -26,14 +30,27 @@ export default function Navigation() {
         <Nav > 
           { !loggedIn?(
               <React.Fragment>
-                <Nav.Link as={NavLink} to="/signup">Crear cuenta</Nav.Link>
-                  <Nav.Link as={NavLink} to="/signin">Iniciar sesion</Nav.Link>
+                <Nav.Link as={NavLink} to="/signup">
+                  Crear cuenta
+                </Nav.Link>
+                <Nav.Link as={NavLink} to="/signin">
+                  Iniciar sesion
+                </Nav.Link>
               </React.Fragment>
            )
            :(
-                <NavDropdown title={user.sub} id="menu-dropdown">
-                  <NavDropdown.Item as={NavLink} to="/posts">Mis Posts</NavDropdown.Item>
-                  <NavDropdown.Item onClick={()=>dispatch(logoutUser())}>Cerrar sesion</NavDropdown.Item>
+                <NavDropdown 
+                 title={user.sub} 
+                 id="menu-dropdown">
+                  <NavDropdown.Item 
+                   as={NavLink} 
+                   to="/posts">
+                    Mis Posts
+                  </NavDropdown.Item>
+                  <NavDropdown.Item 
+                    onClick={()=>dispatch(logoutUser())}>
+                    Cerrar sesion
+                  </NavDropdown.Item>
                 </NavDropdown>
              
              )

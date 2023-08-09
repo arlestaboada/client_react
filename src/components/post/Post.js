@@ -9,13 +9,17 @@ import DeletePostButton from './buttons/DeletePostButton'
 export default function Post({post, renderControls}) {
   return (
     <Card className='mb-4'>
-      {renderControls && <Card.Header className='d-flex justify-content-between'>
+      {renderControls && 
+      <Card.Header 
+       className='d-flex justify-content-between'>
         <div>
           <Badge
             className='me-2 bg-secondary' >
             {post.exposure.type}
           </Badge>
-          {post.expired && post.exposure.id===exposures.PUBLIC &&  <Badge
+          {post.expired && 
+           post.exposure.id===exposures.PUBLIC 
+            &&  <Badge
             className='me-2 bg-danger' >
             Expiró
           </Badge>}
@@ -39,11 +43,14 @@ export default function Post({post, renderControls}) {
       
       <Card.Body>
         <Card.Title>
-          <Link to={`/post/${post.postId}`}>{post.title}</Link>
+          <Link to={`/post/${post.postId}`}>
+            {post.title}
+          </Link>
 
         </Card.Title>
         <Card.Text>
-          Creado por {post.user.firstName},{moment(post.createdAt).fromNow()}
+          Creado por {post.user.firstName},
+          {moment(post.createdAt).fromNow()}
 
         </Card.Text>
       </Card.Body>

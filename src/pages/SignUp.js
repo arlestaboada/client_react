@@ -35,7 +35,8 @@ export default function SignUp() {
 
     }
     if(!validator.isLength(password,{min:8,max:30})){
-      errors.password="La contraseña debe tener entre 8 y 30 caracteres."
+      errors.password=
+      "La contraseña debe tener entre 8 y 30 caracteres."
 
     }
 
@@ -75,19 +76,28 @@ export default function SignUp() {
   return (
    <Container>
       <Row>
-        <Col sm="12" md={{span:8, offset:2}} lg={{span:6,offset:3}}>
+        <Col 
+         sm="12" 
+         md={{span:8, offset:2}} 
+         lg={{span:6,offset:3}}>
           <Card body>
-            {errors.registerError && <Alert variant="danger">{errors.registerError}</Alert>}
+            {errors.registerError 
+             && <Alert variant="danger">
+                  {errors.registerError}
+                </Alert>}
             <h3>Crear cuenta</h3>
             <hr/>
-            <SignUpForm errors={errors} onSubmitCallback={register}></SignUpForm>
+            <SignUpForm 
+             errors={errors} 
+             onSubmitCallback={register}>
+             </SignUpForm>
             <div className='mt-4'>
-              <Link to={"/signup"}>¿Ya tienes una cuenta? Inicia sesión aquí. </Link>
+              <Link to={"/signup"}>
+                ¿Ya tienes una cuenta? Inicia sesión aquí. 
+              </Link>
 
             </div>
-
           </Card>
-        
         </Col>
       </Row>
    </Container>

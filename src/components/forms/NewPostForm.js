@@ -1,6 +1,9 @@
 import React,{useState} from 'react'
-import {Form, Button,Col,Row, FormControl}   from 'react-bootstrap'
+import {Form, Button,Col,Row, FormControl} 
+from 'react-bootstrap'
+
 import {exposures} from "../../helpers/exposures"
+
 export default function NewPostForm(
     {errors,
      onSubmitCallback,
@@ -13,7 +16,8 @@ export default function NewPostForm(
    const [title, setTitle] = useState(pTitle)
    const [content, setContent] = useState(pContent)
    const [exposureId, setExposureId] = useState(pExposureId)
-   const [expirationTime, setExpirationTime] = useState(pExpirationTime)
+   const [expirationTime, setExpirationTime] =
+   useState(pExpirationTime)
 
    const submitForm=(e)=>{
     e.preventDefault()
@@ -49,13 +53,19 @@ export default function NewPostForm(
         </Form.Group>
         <Row>
             <Col md="6" xs="12">
-                <Form.Group controlId='expirationTime' className='mb-3'>
-                    <Form.Label>Tiempo de expiración</Form.Label>
+                <Form.Group 
+                    controlId='expirationTime' 
+                    className='mb-3'>
+                    <Form.Label>
+                      Tiempo de expiración
+                    </Form.Label>
                     <FormControl 
-                    disabled={exposureId==exposures.PRIVATE}
-                    as="select" 
-                    value={expirationTime}
-                    onChange={e=>setExpirationTime(e.target.value)}>
+                        disabled={exposureId==exposures.PRIVATE}
+                        as="select" 
+                        value={expirationTime}
+                        onChange={
+                            e=>setExpirationTime(e.target.value)
+                        }>
                         <option value="30">30 minutos</option>
                         <option value="60">1 hora</option>
                         <option value="120">2 horas</option>
@@ -75,12 +85,21 @@ export default function NewPostForm(
 
                 </Form.Group>
 
-                <Form.Group controlId='exposureId' className='mb-3'>
-                    <Form.Label>Tipo de post</Form.Label>
+                <Form.Group 
+                    controlId='exposureId'
+                    className='mb-3'>
+                    <Form.Label>
+                        Tipo de post
+                    </Form.Label>
                     <div>
                         <Form.Check
-                          onChange={e=>setExposureId(e.target.value)}
-                          checked={exposureId==exposures.PRIVATE}
+                          onChange=
+                          {
+                            e=>setExposureId(e.target.value)
+                          }
+                          checked={
+                            exposureId==exposures.PRIVATE
+                          }
                           value={exposures.PRIVATE}
                           inline
                           label="Privado"
@@ -90,7 +109,9 @@ export default function NewPostForm(
 
                         </Form.Check>
                         <Form.Check
-                          onChange={e=>setExposureId(e.target.value)}
+                          onChange={
+                            e=>setExposureId(e.target.value)
+                          }
                           checked={exposureId==exposures.PUBLIC}
                           value={exposures.PUBLIC}
                           inline
@@ -133,7 +154,11 @@ export default function NewPostForm(
                         }
                     </Form.Control.Feedback>
         </Form.Group>
-        <Button  variant='primary' type="submit">{textButton}</Button>
+        <Button  
+         variant='primary' 
+         type="submit">
+            {textButton}
+        </Button>
 
     </Form>
   )

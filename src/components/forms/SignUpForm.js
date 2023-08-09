@@ -63,9 +63,6 @@ export default function SignUpForm({errors,onSubmitCallback}) {
             </Col>
         </Row>
 
-
-
-
         <Form.Group control="email">
             <Form.Label>Correo electrónico</Form.Label>
             <Form.Control
@@ -106,7 +103,11 @@ export default function SignUpForm({errors,onSubmitCallback}) {
 
         </Form.Group>
 
-        <Button variant='primary' type="submit">Crear cuenta</Button>
+        <Button 
+         variant='primary' 
+         type="submit">
+            Crear cuenta
+        </Button>
 
     </Form>
   )

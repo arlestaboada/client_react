@@ -52,7 +52,10 @@ export default function SignIn() {
       .then(response=>{
 
     }).catch(err=>{
-        setErrors({auth:"No se puede inciar sesión con esas credenciales."})
+        setErrors({
+          auth:
+          "No se puede inciar sesión con esas credenciales."
+        })
       
     })
   }
@@ -60,19 +63,27 @@ export default function SignIn() {
   return (
    <Container>
       <Row>
-        <Col sm="12" md={{span:8, offset:2}} lg={{span:6,offset:3}}>
+        <Col sm="12" 
+          md={{span:8, offset:2}} 
+          lg={{span:6,offset:3}}>
           <Card body>
-            {errors.auth && <Alert variant="danger">{errors.auth}</Alert>}
+            {errors.auth && 
+            <Alert variant="danger">
+              {errors.auth}
+            </Alert>}
             <h3>Iniciar sesión</h3>
             <hr/>
-            <SignInForm errors={errors} onSubmitCallback={login}></SignInForm>
+            <SignInForm 
+             errors={errors} 
+             onSubmitCallback={login}>
+             </SignInForm>
+
             <div className='mt-4'>
-              <Link to={"/signup"}>¿No tienes una cuenta? Registrate aquí</Link>
-
+              <Link to={"/signup"}>
+                ¿No tienes una cuenta? Registrate aquí
+              </Link>
             </div>
-
-          </Card>
-        
+          </Card> 
         </Col>
       </Row>
    </Container>

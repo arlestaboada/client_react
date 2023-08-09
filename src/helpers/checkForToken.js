@@ -1,7 +1,9 @@
-import { logoutUser, setCurrentUser } from "../actions/authActions"
-import setAuthToken from "./setAuthToken"
+import { logoutUser, setCurrentUser } 
+from "../actions/authActions"
 import jwt_decode from "jwt-decode"
+
 import store from "../store"
+import setAuthToken from "./setAuthToken"
 
 const checkForToken=()=>{
 
