@@ -7,6 +7,7 @@ import { PUBLIC_POSTS_ENDPOINT } from '../helpers/endpoints'
 
 import Post from "../components/post/Post"
 import Placeholder from '../components/utils/Placeholder'
+import NoPosts from '../components/utils/NoPosts';
 
 
 
@@ -34,6 +35,9 @@ export default function Posts() {
 
       </Card>
       {fetching &&   <Placeholder></Placeholder>}
+      {!fetching && posts.length===0 && 
+        <NoPosts text="No hay post públicos disponibles.">
+        </NoPosts>}
     
       <div>
         {posts.map(post=><Post key={post.postId} 

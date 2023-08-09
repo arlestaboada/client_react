@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import Post from "../components/post/Post"
 import Placeholder from '../components/utils/Placeholder'
 import { getUserPosts } from '../actions/postActions'
+import NoPosts from '../components/utils/NoPosts'
 
 
 
@@ -46,6 +47,9 @@ export default function UserPosts() {
 
       </Card>
       {fetching &&   <Placeholder></Placeholder>}
+      {!fetching &&   posts.length===0 && 
+      <NoPosts text="No hay post privados disponibles.">
+      </NoPosts>}
       <div>
         {posts.map(post=><Post key={post.postId} 
           post={post} renderControls={true}>
