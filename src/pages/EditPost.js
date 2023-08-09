@@ -8,7 +8,7 @@ import {toast} from 'react-toastify'
 import { isObjEmpty } from '../helpers/helpers'
 import NewPostForm from '../components/forms/NewPostForm'
 import { exposures } from '../helpers/exposures'
-import { CREATE_POST_ENDPOINT,POSTS_DETAILS_ENDPOINT } from '../helpers/endpoints'
+import { UPDATE_POST_ENDPOINT,POSTS_DETAILS_ENDPOINT } from '../helpers/endpoints'
 import { useDispatch } from 'react-redux'
 import { getUserPosts } from '../actions/postActions'
 
@@ -35,7 +35,7 @@ export default function EditPost() {
        
   },[])
 
-  const createPost =async({title,content,
+  const editPost =async({title,content,
     exposureId,expirationTime})=>{
 
     const errors={}
@@ -60,21 +60,21 @@ export default function EditPost() {
     expirationTime=exposureId==exposures.PRIVATE?0:expirationTime
 
     try {
-      const response= await axios.post(
-                     CREATE_POST_ENDPOINT,
+      const response= await axios.put(
+                     `${UPDATE_POST_ENDPOINT}/${post.postId}`,
                      {title,content,
                       exposureId,expirationTime
                     })
       await dispatch(getUserPosts())
-      toast.info("El post se ha creado.",{
+      toast.info("El post se ha modificado",{
              position:toast.POSITION.BOTTOM_CENTER,
-       autoClose:2000
+             autoClose:2000
             })
       history(`/post/${response.data.postId}`)
       
     } catch (error) {
 
-      setErrors({newpost:error.response.data.message})
+      setErrors({editpost:error.response.data.message})
       
     }
  
@@ -85,15 +85,14 @@ export default function EditPost() {
       <Row>
         <Col sm="12"  lg={{span:10,offset:1}}>
           <Card body>
-            {errors.newpost && <Alert variant="danger">{errors.auth}</Alert>}
+            {errors.editpost && <Alert variant="danger">{errors.auth}</Alert>}
             <h3>Editar Post</h3>
             <hr/>
             {post &&  <NewPostForm 
                     errors={errors} 
-                    onSubmitCallback={createPost}
+                    onSubmitCallback={editPost}
                     pTitle={post.title}
                     pContent={post.content}
-                    pExpirationTime={post.expirationTime}
                     pExposureId={post.exposure.id}
                     textButton={"Editar post"}
                    ></NewPostForm>}
