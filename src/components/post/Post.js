@@ -1,6 +1,6 @@
 import React from 'react'
 import { Badge,Button, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import moment from "moment"
 
 import { exposures } from '../../helpers/exposures'
@@ -21,8 +21,17 @@ export default function Post({post, renderControls}) {
           </Badge>}
         </div>
         <div>
-          <Button variant="primary" size="sm" className='me-2'>Editar</Button>
-          <DeletePostButton postId={post.postId} title={post.title}>
+          <Button 
+            variant="primary" 
+            size="sm" 
+            className='me-2'
+            as={NavLink}
+            to={`/editpost/${post.postId}`}>
+              Editar
+          </Button>
+          <DeletePostButton 
+            postId={post.postId} 
+            title={post.title}>
           </DeletePostButton>
         </div>
 

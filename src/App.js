@@ -16,14 +16,17 @@ import { Provider } from "react-redux"
 import checkForToken from "./helpers/checkForToken"
 import PrivateRoute from "./utils/PrivateRoute"
 import NewPost from "./pages/NewPost"
+import EditPost from "./pages/EditPost"
 
 import { ToastContainer } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.min.css"
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 
+
 import moment from "moment"
 import "moment/locale/es"
+
 
 moment.locale("es")
 
@@ -47,11 +50,15 @@ function App() {
                   <Route exact path="/" Component={Posts}></Route>
                   <Route exact path="/signin" Component={SignIn}></Route>
                   <Route exact path="/signup" Component={SignUp}></Route>
-                  <Route exact path="/newpost" Component={NewPost}></Route>
+                  
 
                   <Route exact path="/post/:id" Component={PostDetails}></Route>
                   <Route exact path="/posts" 
                   element={<PrivateRoute ><UserPosts/></PrivateRoute>}/>
+                  <Route exact path="/newpost" 
+                  element={<PrivateRoute ><NewPost/></PrivateRoute>}/>
+                   <Route exact path="/editpost/:id" 
+                  element={<PrivateRoute ><EditPost/></PrivateRoute>}/>
                 
                  
                   

@@ -19,7 +19,6 @@ export default function PostDetails() {
     useEffect(()=>{
         axios.get(`${POSTS_DETAILS_ENDPOINT}/${id}`)
             .then(response=>{
-              console.log(response.data)
               setPost(response.data)
              
     
